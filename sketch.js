@@ -4,13 +4,15 @@ $(document).ready(function(){
 	$('body').prepend('<button id="clear">Clear</button>');
 
 	var genDivs = function(size){
+		$('#container').append('<table cellspacing="0" cellpadding="0"></table>')
 		for (var i = 1; i <= size; i++){
-			$('#container').append('<div class="row"></div>');
+			$('table').append('<tr></tr>');
 				for (var j =1; j <= size; j++){
-					$('.row').last().append('<div class="cell"></div>');
+					$('tr').last().append('<td></td>');
+					$('td').last().append('<div class="cell"></div>')
 				}
-		$('.cell').css({'width': '50px', 'height': '50px'});
-		$('.row').css({'width': '50px', 'display': 'block', 'float': 'left'});	
+		$('table').css({'width': '100%', 'height': '100%', 'border': 'none'});
+		$('.cell').css({'width': '100%', 'height': '100%'});
 		}
 		$('.cell').hover(function(){
 			$(this).css({'background-color': '#303030'});
@@ -19,7 +21,7 @@ $(document).ready(function(){
 	}
 
 	var buttonPress = function(){
-		$('.row').remove();
+		$('table').remove();
 		var pixels = 0 + prompt('how big we talkin?');
 		genDivs(pixels);
 	}
